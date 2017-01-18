@@ -1,0 +1,28 @@
+{
+  "name": "rduino",
+  "description": "Arduino framework for mad scientists",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Lsong <song940@gmail.com>",
+  "license": "MIT",
+  "repository": "git@github.com:song940/rduino.git",
+  "homepage": "https://github.com/song940/rduino#readme",
+  "bugs": {
+    "url": "https://github.com/song940/rduino/issues"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "colors": "*",
+    "serialport": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "arduino",
+    "serial",
+    "framework"
+  ]
+}
