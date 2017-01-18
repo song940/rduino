@@ -1,4 +1,4 @@
-# duino
+# rduino
 
 A framework for working with Arduinos in node.js
 
@@ -6,20 +6,23 @@ A framework for working with Arduinos in node.js
 
 # install
 
-    npm install duino
+    npm install rduino
 
 # usage
 
 ````javascript
-var arduino = require('duino'),
-    board = new arduino.Board();
-
-var led = new arduino.Led({
-  board: board,
-  pin: 13
+var arduino = require('rduino'),
+  
+var board = new arduino.Board({
+  debug: true
 });
 
-led.blink();
+var led = new arduino.LED(board);
+
+board.on('ready', function(){
+  led.blink();
+});
+
 ````
 
 # what ಠ_ಠ
@@ -37,9 +40,7 @@ The way this works is simple (in theory, not in practice). The Arduino listens f
 ##board
 
 ````javascript
-var board = new arduino.Board({
-  device: "ACM"
-});
+var board = new arduino.Board();
 ````
 The board library will attempt to autodiscover the Arduino.
 The `device` option can be used to set a regex filter that will help the library when scanning for matching devices.
@@ -73,23 +74,23 @@ board.on('data', function(m){
 }
 ````
 
-###board.serial
+### board.serial
 
 Low-level access to the serial connection to the board
 
-###board.write(msg)
+### board.write(msg)
 
 Write a message to the board, wrapped in predefined delimiters (! and .)
 
-###board.pinMode(pin, mode)
+### board.pinMode(pin, mode)
 
 Set the mode for a pin. `mode` is either `'in'` or `'out'`
 
-###board.digitalWrite(pin, val)
+### board.digitalWrite(pin, val)
 
 Write one of the following to a pin:
 
-####board.HIGH and board.LOW
+#### board.HIGH and board.LOW
 
 Constants for use in low-level digital writes
 
@@ -315,7 +316,7 @@ Pins can be sent as an integer or a string(`1`, `2`, `"3"`, `"A0"`)
 
 (The MIT License)
 
-Copyright (c) 2011 Cam Pedersen <cam@onswipe.com>
+Copyright (c) 2011 Lsong <song940@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
